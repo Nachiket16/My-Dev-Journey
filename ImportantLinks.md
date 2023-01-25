@@ -24,7 +24,7 @@ https://phoenixnap.com/kb/install-maven-on-ubuntu
 * https://www.ibm.com/docs/en/sgfmw/5.3.1?topic=format-datetime-formats
 
 ## Local Date and Time Formatting JAVA
-h* ttps://mkyong.com/java8/java-8-how-to-convert-string-to-localdate/
+* https://mkyong.com/java8/java-8-how-to-convert-string-to-localdate/
 LocalDate -> LocalDateTime conversion
 * https://beginnersbook.com/2017/10/java-convert-localdate-to-localdatetime/
 
