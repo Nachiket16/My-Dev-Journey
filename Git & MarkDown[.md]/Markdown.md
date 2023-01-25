@@ -1,7 +1,7 @@
 # Markdown Tips and Trick
 
 > ### Mermaid GeoJSON -> Location In MD
-> *https://github.blog/changelog/2022-03-17-mermaid-topojson-geojson-and-ascii-stl-diagrams-are-now-supported-in-markdown-and-as-files/
+>* https://github.blog/changelog/2022-03-17-mermaid-topojson-geojson-and-ascii-stl-diagrams-are-now-supported-in-markdown-and-as-files/
 
 ### Here's a geoJSON map in markdown
 
