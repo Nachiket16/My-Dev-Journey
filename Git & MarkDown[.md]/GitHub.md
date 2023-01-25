@@ -5,4 +5,5 @@
 
 #### Create branch from the branch
 
-git clone -b < branchname > < remote-repo-url >
+
+![gitbranch](https://user-images.githubusercontent.com/84851340/214488575-8edab0b5-8a8e-4ba6-bcbd-c08c184dda8d.jpg)
