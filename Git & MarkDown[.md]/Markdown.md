@@ -23,10 +23,15 @@
 > ### Mermaid JS
 > Git repo & docs
 >* https://github.com/mermaid-js/mermaid
+>
+> ### Mermaid Live Editor
+>* https://mermaid.live/
 
+``` mermaid
 flowchart LR
 
 A[Hard] -->|Text| B(Round)
 B --> C{Decision}
 C -->|One| D[Result 1]
 C -->|Two| E[Result 2]
+```
