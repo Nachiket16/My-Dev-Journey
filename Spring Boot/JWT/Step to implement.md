@@ -1,6 +1,35 @@
+# 1 Add the dependency
 
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+
+# 2 Create Class JwtAuthenticationEntryPoint implement AuthenticationEntryPoint
+
+> Method of this class is called whenever an exception is thrown due to unauthenticated user trying to access the resource that require authentication
 
 ``` Java
+@Component
+public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint    
+//AuthEntry will be call when un authenticated exception is called
+{
+    @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        PrintWriter writer = response.getWriter();
+        writer.println("Access Denied !! "+ authException.getMessage());
+    }
+}
+
+```
+
+# 3 Create JWTHelper class
+> This class contains related to perform operations with jwt like generateJwtToken(), validateJwtToken(), etc...
+
+``` Java
+
 @Component
 public class JwtHelper {
 
@@ -64,3 +93,18 @@ public class JwtHelper {
 
 }
 ```
+# 4 Create JwtAuthenticationFilter extends onceRequestFilter
+
+* a. get token from request
+* b. Vaidate token
+* c. get username from token
+* d. load user associated with token
+* e. set authentication
+
+# 5 Create JwtRequest and JwtResponse
+
+# 6 Configure JWT in spring security config
+
+# 7 Create a Login api to create and return token if user is valid
+
+# 8 Test 
