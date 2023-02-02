@@ -101,10 +101,245 @@ public class JwtHelper {
 * d. load user associated with token
 * e. set authentication
 
+``` Java
+
+@Component
+@Slf4j
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
+
+    @Autowired
+    private JwtHelper jwtHelper;
+
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        String requestHeader = request.getHeader("Authorization");
+        log.info("Header : {}", requestHeader);
+        String username = null;
+        String token = null;
+
+        if (requestHeader != null && requestHeader.startsWith("Bearer")) {
+            token = requestHeader.substring(7);
+            try {
+                username = this.jwtHelper.getUsernameFromToken(token);
+            } catch (IllegalArgumentException e) {
+                log.info("Illegal Argument exception");
+                e.printStackTrace();
+            } catch (ExpiredJwtException e) {
+                e.printStackTrace();
+                log.info("JWT Expired !!! ");
+            } catch (MalformedJwtException e) {
+                e.printStackTrace();
+                log.info("Some changes has done in token !!! Invalid Token");
+            } catch (Exception e) {
+                e.printStackTrace();
+                log.info("Exception !!!! ");
+            }
+        } else {
+            log.info("Invalid header value !!!!!!!!!!!! ");
+        }
+
+        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+            Boolean validateToken = this.jwtHelper.validateToken(token, userDetails);
+            if (validateToken) {
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            } else {
+                log.info("Validate Token Failed !!!!! ");
+            }
+        }
+        filterChain.doFilter(request,response);
+    }
+}
+
+
+```
+
 # 5 Create JwtRequest and JwtResponse
+
+``` Java
+public class JwtRequest
+{
+    private String email;
+    private String password;
+
+}
+
+public class JwtResponse 
+{
+    private String jwtToken;
+    private UserDto user;
+}
+```
 
 # 6 Configure JWT in spring security config
 
+``` JAVA
+
+@Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig {
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Autowired
+    private JwtAuthenticationEntryPoint authenticationEntryPoint;
+
+    @Autowired
+    private JwtAuthenticationFilter authenticationFilter;
+
+// ______________________________________________________________________________________________________
+
+    // IN MEMORY CONFIGURATION
+   @Bean
+   public UserDetailsService userDetailsService(){
+       UserDetails admin  = User.builder()
+               .username("Nachiket")
+               .password(passwordEncoder().encode("admin"))
+               .roles("ADMIN")
+               .build();
+       UserDetails normal = User.builder()
+               .username("Aniket")
+               .password(passwordEncoder().encode("admin"))
+               .roles("NORMAL")
+               .build();
+       //Users create
+    //    InMemoryUserDetailsManager - Is implementation class of UserDetailsService
+
+               return new InMemoryUserDetailsManager(admin,normal);
+   }
+
+    //FROM DB
+// ______________________________________________________________________________________________________
+
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+       //Form base Login
+       http.authorizeRequests()
+               .anyRequest().authenticated().and()
+               .formLogin()
+               .loginPage("login.html")
+               .loginProcessingUrl("/process-url")
+               .defaultSuccessUrl("/dashboard")
+               .failureForwardUrl("/error")
+               .and()
+               .logout()
+               .logoutUrl("/do-logout");
+// ______________________________________________________________________________________________________
+
+        http.csrf()
+                .disable()
+                .cors()
+                .disable()
+                .authorizeRequests()
+                .requestMatchers("/auth/login")
+                .permitAll()
+                .requestMatchers(HttpMethod.POST, "/users/")
+                .permitAll()
+                .requestMatchers(HttpMethod.GET,"/users")
+                .permitAll()
+                .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
+                .anyRequest()
+                .authenticated()
+                .and()
+                .exceptionHandling()
+                .authenticationEntryPoint(authenticationEntryPoint)
+                .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+        http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
+
+        return http.build();
+    }
+// ______________________________________________________________________________________________________
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setUserDetailsService(userDetailsService);
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+        return daoAuthenticationProvider;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration builder) throws Exception {
+        return builder.getAuthenticationManager();
+    }
+
+}
+
+
+
+```
+
 # 7 Create a Login api to create and return token if user is valid
+
+``` java
+
+@RestController
+@RequestMapping("/auth")
+public class AuthController {
+
+    @Autowired
+    private UserDetailsService userDetailsService;
+    @Autowired
+    private ModelMapper mapper;
+
+    @Autowired
+    private AuthenticationManager manager;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private JwtHelper jwtHelper;
+
+    @PostMapping("/login")
+    public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest request){
+        this.doAuthenticate(request.getEmail(),request.getPassword());
+        UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmail());
+        String token = jwtHelper.generateToken(userDetails);
+
+        UserDto userDto = mapper.map(userDetails, UserDto.class);
+
+        JwtResponse response = JwtResponse.builder()
+                .jwtToken(token)
+                .user(userDto)
+                .build();
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    private void doAuthenticate(String email, String password) {
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(email, password);
+        try {
+            manager.authenticate(authentication);
+        }catch (BadCredentialsException e){
+            throw new BadApiRequest(" Invalid username Or password !!!!!");
+        }
+    }
+
+    @GetMapping("/current")
+    public ResponseEntity<UserDto> getCurrentUser(Principal principal){
+        String name = principal.getName();
+        return new ResponseEntity<>(mapper.map(userDetailsService.loadUserByUsername(name), UserDto.class ), HttpStatus.OK);
+    }
+
+}
+
+
+```
 
 # 8 Test 
