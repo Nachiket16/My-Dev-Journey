@@ -1,9 +1,9 @@
 # 1 Add the dependency
 
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-security</artifactId>
-</dependency>
+< dependency >
+    < groupId >org.springframework.boot</ groupId >
+    < artifactId >spring-boot-starter-security</ artifactId >
+</ dependency >
 
 
 # 2 Create Class JwtAuthenticationEntryPoint implement AuthenticationEntryPoint
