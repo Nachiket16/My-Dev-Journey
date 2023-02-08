@@ -24,10 +24,14 @@
 
 ```
 > Eg:
-> { "a" : "asd",
+
+``` JSON
+  { "a" : "asd",
     "b" : "sd",
     "c" : "sadf"
   }
+  
+```
 
 ### Object to the JSON String 
 
@@ -51,8 +55,10 @@ log.info("##### postInvoice is successfully posted for the Anchor Invoice JSON: 
 
 ```
 > Eg:
-> "return" : {
+``` JSON
+"return" : {
     "a" : "asd",
     "b" : "asd",
     "c" : "asd"
-  }
+}
+```
