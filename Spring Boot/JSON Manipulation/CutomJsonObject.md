@@ -26,10 +26,11 @@
 > Eg:
 
 ``` JSON
-  { "a" : "asd",
-    "b" : "sd",
-    "c" : "sadf"
-  }
+"return" : {
+    "a" : "asd",
+    "b" : "asd",
+    "c" : "asd"
+}
   
 ```
 
@@ -56,7 +57,7 @@ log.info("##### postInvoice is successfully posted for the Anchor Invoice JSON: 
 ```
 > Eg:
 ``` JSON
-"return" : {
+{
     "a" : "asd",
     "b" : "asd",
     "c" : "asd"
