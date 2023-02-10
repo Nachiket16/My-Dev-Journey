@@ -63,3 +63,27 @@ log.info("##### postInvoice is successfully posted for the Anchor Invoice JSON: 
     "c" : "asd"
 }
 ```
+
+### String to JSON object
+
+``` JAVA 
+  JsonObject payload = Json.createObjectBuilder()
+            .add("auth",
+                Json.createObjectBuilder()
+                    .add("refresh_token", anchorUpStream.getAuthRefreshToken())
+                    .build()
+            )
+            .build();
+            
+// Dependancy --> <org.glassfish> <javax.json >
+```
+> Eg
+> String str= "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozMzUsInR5cGUiOiJyZWZyZXNoX3Rva2VuIn0.l4X_-6d1tWVuzlLG1BueVe0fehyjjlo9M9ujk_ZeMcQ"
+> Converted into 
+``` JSON
+{
+    "auth": {
+        "refresh_token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozMzUsInR5cGUiOiJyZWZyZXNoX3Rva2VuIn0.l4X_-6d1tWVuzlLG1BueVe0fehyjjlo9M9ujk_ZeMcQ"
+    }
+}
+```
