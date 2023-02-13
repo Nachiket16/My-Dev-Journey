@@ -87,3 +87,22 @@ log.info("##### postInvoice is successfully posted for the Anchor Invoice JSON: 
     }
 }
 ```
+### Get Value from JSON string 
+
+``` JAVA
+
+    public static String getValueFromJson(String node, String jsonBody) {
+        String value = "";
+        String[] splitNodes = node.split("\\.");
+        try {
+            JsonNode jsonNode = new ObjectMapper().readTree(jsonBody);
+            for (String i : splitNodes) {
+                jsonNode = jsonNode.path(i);
+            }
+            value = jsonNode.asText();
+        } catch (Exception e) {
+            log.error("EXCEPTION", e);
+        }
+        return value;
+    }
+```
