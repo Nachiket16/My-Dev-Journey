@@ -5,7 +5,7 @@ JsonObject object = Json.createObjectBuilder().build();
  
 The class JsonBuilderFactory also contains methods to create JsonObjectBuilder instances. A factory instance can be used to create multiple builder instances with the same configuration. This the preferred way to create multiple instances. The example code below shows how to build a JsonObject model that represents the following JSON object:
 
- 
+ ``` JSON
  {
    "payment_gateway":{
       "invoice_details":[
@@ -18,7 +18,7 @@ The class JsonBuilderFactory also contains methods to create JsonObjectBuilder i
       "source":"zxcv"
    }
 }
-
+```
  ``` JAVA
   JsonObjectBuilder root = Json.createObjectBuilder();
         JsonObject payload = Json.createObjectBuilder()
@@ -38,6 +38,7 @@ The class JsonBuilderFactory also contains methods to create JsonObjectBuilder i
             .build();
 
 ```
+ ``` JSON
 {
      "firstName": "John", "lastName": "Smith", "age": 25,
      "address" : {
@@ -51,7 +52,7 @@ The class JsonBuilderFactory also contains methods to create JsonObjectBuilder i
          { "type": "fax", "number": "646 555-4567" }
      ]
  }
-
+```
 ``` JAVA
  JsonBuilderFactory factory = Json.createBuilderFactory(config);
  JsonObject value = factory.createObjectBuilder()
