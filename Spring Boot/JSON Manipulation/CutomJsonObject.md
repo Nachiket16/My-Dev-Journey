@@ -1,3 +1,80 @@
+### Custom JSON call Using the Interface JsonObjectBuilder
+
+JsonObject object = Json.createObjectBuilder().build();
+ 
+ 
+The class JsonBuilderFactory also contains methods to create JsonObjectBuilder instances. A factory instance can be used to create multiple builder instances with the same configuration. This the preferred way to create multiple instances. The example code below shows how to build a JsonObject model that represents the following JSON object:
+
+ 
+ {
+   "payment_gateway":{
+      "invoice_details":[
+         {
+            "id":"123",
+            "user_requested_amount":123
+         }
+      ],
+      "loan_application_id":123,
+      "source":"zxcv"
+   }
+}
+
+ ``` JAVA
+  JsonObjectBuilder root = Json.createObjectBuilder();
+        JsonObject payload = Json.createObjectBuilder()
+            .add("id", invoiceId)
+            .add("user_requested_amount", order.getInvoiceAmount())
+            .build();
+
+        JsonObject invoiceDetails = root
+            .add("invoice_details", Json.createArrayBuilder()
+                .add(payload))
+            .add("loan_application_id", order.getLoanApplicationId())
+            .add("source", AppConstants.SOURCE)
+            .build();
+
+        JsonObject finalPayload = Json.createObjectBuilder()
+            .add("payment_gateway", invoiceDetails)
+            .build();
+
+```
+{
+     "firstName": "John", "lastName": "Smith", "age": 25,
+     "address" : {
+         "streetAddress": "21 2nd Street",
+         "city": "New York",
+         "state": "NY",
+         "postalCode": "10021"
+     },
+     "phoneNumber": [
+         { "type": "home", "number": "212 555-1234" },
+         { "type": "fax", "number": "646 555-4567" }
+     ]
+ }
+
+``` JAVA
+ JsonBuilderFactory factory = Json.createBuilderFactory(config);
+ JsonObject value = factory.createObjectBuilder()
+     .add("firstName", "John")
+     .add("lastName", "Smith")
+     .add("age", 25)
+     .add("address", factory.createObjectBuilder()
+         .add("streetAddress", "21 2nd Street")
+         .add("city", "New York")
+         .add("state", "NY")
+         .add("postalCode", "10021"))
+     .add("phoneNumber", factory.createArrayBuilder()
+         .add(factory.createObjectBuilder()
+             .add("type", "home")
+             .add("number", "212 555-1234"))
+         .add(factory.createObjectBuilder()
+             .add("type", "fax")
+             .add("number", "646 555-4567")))
+     .build();
+```
+
+
+
 ### For custom request of the json object to the POST 
 > In the given example we have the obje
 
