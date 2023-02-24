@@ -5,6 +5,10 @@
 
 > https://medium.com/@ankithahjpgowda/log-request-and-responses-of-rest-apis-in-springboot-c13f9bc7903f
 
+> https://www.atatus.com/blog/best-practices-in-java-logging/
+
+> https://rollbar.com/blog/spring-boot-logging/
+
 
 ### Standard logs for entire project 
 
