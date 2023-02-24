@@ -5,11 +5,11 @@
 
 ## Change happen in developement
 
-[X] Refactoring and Unit testing is the part of the task
+[ X ] Refactoring and Unit testing is the part of the task
 [x] CI pipeline is running eg. Sonar + IDE plugins(SonarLint)
     > Sonar will help you in clean code rather than wasting time in the code review on every step
     > Also Don't push garbage code on the git
-[ ] Code review and Pair Programming 
+[] Code review and Pair Programming 
     > Pair programming will sky rocket the learning
 [ ] Languages and Framework evolved
 
