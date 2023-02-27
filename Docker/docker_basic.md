@@ -1,6 +1,7 @@
 # Docker
-**Official website**
-> https://hub.docker.com/
+**Official website**      
+> https://hub.docker.com/       
+> https://docs.docker.com/engine/reference/commandline/container_ls/    
 
 ## Docker Basic Commands
 
@@ -49,12 +50,13 @@ hello-world | latest | feb5d9fea6a5 | 17 months ago | 13.3kB
 
 ❯ sudo docker run --name javaContainer -d < CONTAINER ID >                  
 ❯ sudo docker run --name javaContainer --detach < CONTAINER ID >
-> ❯ sudo docker run --name javaContainer -it -d amazoncorretto
 
 
 `Docker run with interactive mode - This will keep the container running`
 
-❯ sudo docker run --name javaContainer -it -d < Image name >
+❯ sudo docker run --name javaContainer -it -d < Image ID >
+> ❯ sudo docker run --name javaContainer -it -d 5e28ba2b4cdb
+
 
 `Enter/Execute the container image`
 
@@ -64,5 +66,8 @@ hello-world | latest | feb5d9fea6a5 | 17 months ago | 13.3kB
 
 ❯ sudo docker inspect < CONTAINER ID >
 >**❯ sudo docker inspect 93e6190b0a84**
+
+`Stop the docker container`
+> docker stop my_container
 
 
