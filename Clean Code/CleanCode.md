@@ -63,3 +63,11 @@ _________________________________________________________________
 > Method ideally should be few lines(5-10).
 > If we are doing the excessive chaining we should split the code into the various parts and extract variables.
 ![ExcessiveChaining](https://user-images.githubusercontent.com/84851340/221512151-8eee1dd2-ea3d-40d3-827c-0849c1b97078.png)
+
+________________________________________________________________________
+
+**Temporal Coupling**
+> Avoid recycling of the variable.
+> Recycle plastic not the varibles :)
+> ![TemporalCoupling](https://user-images.githubusercontent.com/84851340/221513852-60802b7f-f02e-4344-9353-1bf672867ae5.png)
+
