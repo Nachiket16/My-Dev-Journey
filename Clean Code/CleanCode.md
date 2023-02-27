@@ -70,7 +70,14 @@ ________________________________________________________________________
 > Avoid recycling of the variable.
 > Recycle plastic not the varibles :)
 > ![TemporalCoupling](https://user-images.githubusercontent.com/84851340/221513852-60802b7f-f02e-4344-9353-1bf672867ae5.png)
+_____________________________________________________________________________
 
-### Do not Overengineering the code.
+#### Do not Overengineering the code.
 > In short develope only the code which is necessory at the moment.         
 > Do not assume the future scope and over do and implement uneccessory things in present.       
+
+__________________________________________________________
+
+#### Summery points
+
+![summery](https://user-images.githubusercontent.com/84851340/221515146-bf479352-c68e-427d-a0fb-2910d35b3152.png)
