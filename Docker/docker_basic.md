@@ -24,7 +24,9 @@ Status: Image is up to date for hello-world:latest
 docker.io/library/hello-world:latest
 
 ❯ docker pull < Image name > : < tag >
-> **❯ docker pull openjdk:17.0.6**
+> **❯ sudo docker pull amazoncorretto:17.0.6**                    
+> 17.0.6: Pulling from library/amazoncorretto
+
 
 
 `List of all images`
@@ -32,5 +34,33 @@ docker.io/library/hello-world:latest
 ❯ sudo docker images                  
 REPOSITORY  | TAG | IMAGE ID | CREATED | SIZE       
 hello-world | latest | feb5d9fea6a5 | 17 months ago | 13.3kB
+
+`Search images on the docker`
+
+❯ sudo docker search < Parent Image Name >
+
+> **❯ sudo docker search mysql**        
+> NAME                            DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED        
+> mysql                           MySQL is a widely used, open-source relation…   13860     [OK]             
+
+`Show all run container`
+
+❯ sudo docker ps -a
+
+`Docker run with custom name and in detached mode`
+
+❯ sudo docker run --name javaContainer -d < CONTAINER ID >
+❯ sudo docker run --name javaContainer --detach < CONTAINER ID >
+
+
+`Docker run with interactive mode - This will keep the container running`
+
+❯ sudo docker run --name javaContainer -it -d < Image name >
+
+`Enter/Execute the container image`
+
+❯ sudo docker exec -it < CONTAINER ID > python3
+
+
 
 
