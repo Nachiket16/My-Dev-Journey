@@ -60,7 +60,7 @@ hello-world | latest | feb5d9fea6a5 | 17 months ago | 13.3kB
 
 `Enter/Execute the container image`
 
-❯ sudo docker exec -it < CONTAINER ID > python3
+❯ sudo docker exec -it < CONTAINER ID / Name > jshell
 
 `Inspect the container`
 
