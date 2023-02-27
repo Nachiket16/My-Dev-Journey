@@ -27,8 +27,6 @@ docker.io/library/hello-world:latest
 > **❯ sudo docker pull amazoncorretto:17.0.6**                    
 > 17.0.6: Pulling from library/amazoncorretto
 
-
-
 `List of all images`
 
 ❯ sudo docker images                  
@@ -49,8 +47,9 @@ hello-world | latest | feb5d9fea6a5 | 17 months ago | 13.3kB
 
 `Docker run with custom name and in detached mode`
 
-❯ sudo docker run --name javaContainer -d < CONTAINER ID >
+❯ sudo docker run --name javaContainer -d < CONTAINER ID >                  
 ❯ sudo docker run --name javaContainer --detach < CONTAINER ID >
+> ❯ sudo docker run --name javaContainer -it -d amazoncorretto
 
 
 `Docker run with interactive mode - This will keep the container running`
@@ -61,6 +60,9 @@ hello-world | latest | feb5d9fea6a5 | 17 months ago | 13.3kB
 
 ❯ sudo docker exec -it < CONTAINER ID > python3
 
+`Inspect the container`
 
+❯ sudo docker inspect < CONTAINER ID >
+>**❯ sudo docker inspect 93e6190b0a84**
 
 
