@@ -31,8 +31,7 @@
 
 * Uniform formatting across the team
 
-
 ### Code smell and proper way to write the code 
 
+![PrimitiveObsession](https://user-images.githubusercontent.com/84851340/221503250-b6eb6f31-f799-4eed-a234-080590add1aa.png)
 
-![Alt text](file:///PrimitiveObsession.png)
