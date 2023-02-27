@@ -33,5 +33,24 @@
 
 ### Code smell and proper way to write the code 
 
+** Escape the Primitive Obsession by creating Micro-Types **
+
 ![PrimitiveObsession](https://user-images.githubusercontent.com/84851340/221503250-b6eb6f31-f799-4eed-a234-080590add1aa.png)
+
+** Separate Data from the logic **
+
+>* Put more logic inside the class which leads to OOP
+>* Don't put logic inside the DTO's 
+>* When the complexity is get higher use the OOP
+
+
+### Why identify more classes ?
+
+> Simplify the code.               
+>>* Fewer method parameter              
+>>* Feature Envy -> Spread the logic(oop)           
+>>* Safer -> by using constraints           
+>>* Shrink large entities -> decomposition into the smaller parts       
+
+
 
