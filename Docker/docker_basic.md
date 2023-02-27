@@ -71,4 +71,6 @@ hello-world | latest | feb5d9fea6a5 | 17 months ago | 13.3kB
 `Stop the docker container`
 > docker stop my_container
 
+`Docker Stop`
 
+> docker stop my_container
