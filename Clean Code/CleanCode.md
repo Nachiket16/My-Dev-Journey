@@ -26,6 +26,13 @@
 * Boolean in signature can violate SRP               
 > SRP : "Single Responsibility Principle"           
 >> every class, module, or function in a program should have one responsibility/purpose in a program. As a commonly used definition, "every class should have only one reason to change". The class above violates the single responsibility principle.             
-    
+
+* Replace comments with expressive code
+
 * Uniform formatting across the team
 
+
+### Code smell and proper way to write the code 
+
+
+![Alt text](file:///PrimitiveObsession.png)
