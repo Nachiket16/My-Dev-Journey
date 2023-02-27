@@ -58,9 +58,10 @@ hello-world | latest | feb5d9fea6a5 | 17 months ago | 13.3kB
 > ❯ sudo docker run --name javaContainer -it -d 5e28ba2b4cdb
 
 
-`Enter/Execute the container image`
+`Run / Execute the container image`
 
 ❯ sudo docker exec -it < CONTAINER ID / Name > jshell
+> ❯ sudo docker exec -it javaContainer jshell
 
 `Inspect the container`
 
