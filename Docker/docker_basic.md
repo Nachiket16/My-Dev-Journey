@@ -94,12 +94,21 @@ ________________________________________________________
 
 * This will show you previously running but now stopped images      
 ❯ sudo docker ps -a     
-  * This will remove image/images         
+  * This will remove stopped container image/images         
   ❯ sudo docker rm 93e6190b0a84 dbbe9123d5f4      
-  ❯ sudo docker rm < Conatainer Id, Id, Id >        
+  ❯ sudo docker rm < Conatainer Id, Id, Id >    
+
+* This will Restart the stopped container     
+ ❯ sudo docker restart javaContainer
+ ❯ sudo docker restart < Conatainer Name >
 
 * List of Installed Images        
 ❯ sudo docker images      
   * This will remove image        
 ❯ sudo docker rmi hello-world         
-❯ sudo docker rmi < Image name >
+❯ sudo docker rmi < Image name >   
+
+
+![docker_delet](https://user-images.githubusercontent.com/84851340/222647613-63640bcd-7064-43da-9a08-fada83a236b1.png)
+
+
