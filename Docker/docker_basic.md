@@ -70,3 +70,36 @@ hello-world | latest | feb5d9fea6a5 | 17 months ago | 13.3kB
 
 `Stop the docker container`
 > docker stop my_container
+
+________________________________________________________
+`Mysql On Docker`                 
+❯ sudo docker pull mysql              
+* Set The Password              
+❯ sudo docker run --name mysqlDb -e MYSQL_ROOT_PASSWORD=root -d mysql             
+* Run the Mysql       
+❯ sudo docker exec -it mysqlDb bash  (Enter into the bash)      
+bash-4.4# : mysql -p        
+Enter Password: #### (Enter the set password)       
+mysql > (Hurrey !!!! You have installed the mysql and it's up and runnig)       
+
+![Docker_Mysql](https://user-images.githubusercontent.com/84851340/222643723-6744524c-71aa-457e-a7fb-d0b9e6445915.png)
+
+________________________________________________________
+`How to check and modify Image status`      
+* This will show you running images       
+❯ sudo docker ps      
+   * This will Stop the running images      
+   ❯ sudo docker stop mysqlDb           
+   ❯ sudo docker stop < Container name / ID >       
+
+* This will show you previously running but now stopped images      
+❯ sudo docker ps -a     
+  * This will remove image/images         
+  ❯ sudo docker rm 93e6190b0a84 dbbe9123d5f4      
+  ❯ sudo docker rm < Conatainer Id, Id, Id >        
+
+* List of Installed Images        
+❯ sudo docker images      
+  * This will remove image        
+❯ sudo docker rmi hello-world         
+❯ sudo docker rmi < Image name >
