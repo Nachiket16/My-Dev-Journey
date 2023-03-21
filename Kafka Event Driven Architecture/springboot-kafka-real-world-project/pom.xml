@@ -15,6 +15,7 @@
 	<description>Demo Project for Spring Boot and Kafka</description>
 	<modules>
 		<module>kafka-producer-wikimedia</module>
+		<module>kafka-consumer-db</module>
 	</modules>
 	<!--	For Multi model project make packaging as pom for parent -->
 	<packaging>pom</packaging>
