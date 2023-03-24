@@ -21,8 +21,8 @@
 
 ## Step 1 : Download and copy content of docker file:   
 ``` curl
-  curl --silent --output docker-compose.yml \
-  https://raw.githubusercontent.com/confluentinc/cp-all-in-one/7.3.2-post/cp-all-in-one/docker-compose.yml
+curl --silent --output docker-compose.yml \
+https://raw.githubusercontent.com/confluentinc/cp-all-in-one/7.3.2-post/cp-all-in-one/docker-compose.yml
 
 ```
 
