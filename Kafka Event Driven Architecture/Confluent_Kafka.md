@@ -1,12 +1,19 @@
-# *Confluent kafka on local machine guide 101*
+<style>
+r { color: Red }
+o { color: Orange }
+g { color: Green }
+pi { color: Pink }
+</style>
 
-# What is confluent ?
+# <o>*Confluent for kafka on local machine guide 101*</o>
+
+# What is confluent:question:
 > Confluent Platform is a full-scale data streaming     platform that enables you to easily access, store, and manage data as continuous, real-time streams.
 
-## Installation using docker
+## Installation using docker :whale:
 
 ## Prerequisite 
-> Docker        
+> Docker :whale:       
 >> Installation Guide   
 >> https://hub.docker.com/       
 > https://docs.docker.com/engine/reference/commandline/container_ls/   
@@ -15,18 +22,18 @@
 >```
 
 
-> Docker Compose   
+> Docker Compose :link:
 >> Installation Guide (Linux)   
 >> https://phoenixnap.com/kb/install-docker-compose-on-ubuntu-20-04    
 
-## Step 1 : Download and copy content of docker file:   
+## Step :one: : Download and copy content of docker file    
 ``` curl
 curl --silent --output docker-compose.yml \
 https://raw.githubusercontent.com/confluentinc/cp-all-in-one/7.3.2-post/cp-all-in-one/docker-compose.yml
 
 ```
 
-## Step 2 : Start the Confluent Platform stack with the -d option to run in detached mode:
+## Step :two: : Start the Confluent Platform stack with the -d option to run in detached mode
 
 ``` docker
 sudo docker-compose up -d
@@ -45,7 +52,7 @@ Creating control-center  ... done
 Creating ksqldb-cli      ... done
 ```
 
-## Step 3: Verify that service is up and running:   
+## Step :three:: Verify that service is up and running
 ``` docker
 sudo docker-compose ps
 ```
@@ -73,7 +80,7 @@ If any container isn't up and running try again : sudo **docker-compose up -d** 
 sudo docker-compose restart control-center
 ```
 
-## Step 4 : Navigate to Control Center at http://localhost:9021. It may take a minute or two for Control Center to start and load.
+## Step :four: : Navigate to Control Center at http://localhost:9021. It may take a minute or two for Control Center to start and load.
 
 ### ***Confluent Docs***
 ``` url
@@ -82,7 +89,7 @@ https://docs.confluent.io/platform/current/platform-quickstart.html#create-the-u
 
 Use the docs to navigate and explore more feature of confluent and kafka.
 
-## Step 5 : Last but not least, Stop the container
+## Step :five: : Last but not least, Stop the container
 ``` docker
 sudo docker-compose stop
 ```
@@ -98,4 +105,10 @@ Stopping rest-proxy      ... done
 Stopping schema-registry ... done
 Stopping broker          ... done
 Stopping zookeeper       ... done
+```
+__________________________________________
+
+
+``` url
+https://github.com/Nachiket16/My-Dev-Journey/tree/main/Kafka%20Event%20Driven%20Architecture
 ```
