@@ -7,9 +7,11 @@
 
 ## Prerequisite 
 > Docker        
->> Installation Guide (Linux)    
+>> Installation Guide   
+>> https://hub.docker.com/       
+> https://docs.docker.com/engine/reference/commandline/container_ls/   
 >``` bash
-> sudo apt install docker
+> sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 >```
 
 
@@ -45,7 +47,7 @@ Creating ksqldb-cli      ... done
 
 ## Step 3: Verify that service is up and running:   
 ``` docker
-docker-compose ps
+sudo docker-compose ps
 ```
 output :
 ```  docker
