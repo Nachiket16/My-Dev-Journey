@@ -81,3 +81,21 @@ https://docs.confluent.io/platform/current/platform-quickstart.html#create-the-u
 ```
 
 Use the docs to navigate and explore more feature of confluent and kafka.
+
+## Step 5 : Last but not least, Stop the container
+``` docker
+sudo docker-compose stop
+```
+output :
+``` docker
+❯ sudo docker-compose stop
+Stopping ksql-datagen    ... done
+Stopping control-center  ... done
+Stopping ksqldb-cli      ... done
+Stopping ksqldb-server   ... done
+Stopping connect         ... done
+Stopping rest-proxy      ... done
+Stopping schema-registry ... done
+Stopping broker          ... done
+Stopping zookeeper       ... done
+```
