@@ -9,6 +9,7 @@ pi { color: Pink }
 
 # What is confluent:question:
 > Confluent Platform is a full-scale data streaming     platform that enables you to easily access, store, and manage data as continuous, real-time streams.
+> https://www.youtube.com/watch?v=gJUTErFyuY4&list=PLa7VYi0yPIH35IrbJ7Y0U2YLrR9u4QO-s&index=1
 
 ## Installation using docker :whale:
 
