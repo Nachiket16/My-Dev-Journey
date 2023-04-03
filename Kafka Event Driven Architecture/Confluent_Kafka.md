@@ -112,3 +112,8 @@ __________________________________________
 ``` url
 https://github.com/Nachiket16/My-Dev-Journey/tree/main/Kafka%20Event%20Driven%20Architecture
 ```
+__________________________________________________________
+
+# <pi>*Kafka Ui Open source alternative*<pi>
+> docker run -it -p 8080:8080 -e DYNAMIC_CONFIG_ENABLED=true provectuslabs/kafka-ui            
+> ```localhost:8080```
