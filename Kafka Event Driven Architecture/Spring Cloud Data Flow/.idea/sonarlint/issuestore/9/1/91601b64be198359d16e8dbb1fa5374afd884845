@@ -1,0 +1,12 @@
+
+0
+java:S1700"Rename field "domain"(ÊÔ‘êþÿÿÿÿ
+j	java:S116"VRename this field "create_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸²‡U
+j	java:S116	"VRename this field "update_date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤ß»<
+a	java:S116"LRename this field "A" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›Ââ§
+a	java:S116"MRename this field "NS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–Ì
+e	java:S116"PRename this field "CNAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úñÖº
+g	java:S116"MRename this field "MX" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶òàøÿÿÿÿ
+h	java:S116"NRename this field "TXT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ª„„¨ýÿÿÿÿ
+œ
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(±¸ƒûÿÿÿÿ
