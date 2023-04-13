@@ -77,7 +77,7 @@ The class JsonBuilderFactory also contains methods to create JsonObjectBuilder i
 
 
 ### For custom request of the json object to the POST 
-> In the given example we have the obje
+> In the given example we have the object
 
 ``` JAVA
 //  use ObjectMapper object
