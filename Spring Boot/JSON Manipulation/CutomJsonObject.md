@@ -5,18 +5,79 @@ JsonObject object = Json.createObjectBuilder().build();
  
 The class JsonBuilderFactory also contains methods to create JsonObjectBuilder instances. A factory instance can be used to create multiple builder instances with the same configuration. This the preferred way to create multiple instances. The example code below shows how to build a JsonObject model that represents the following JSON object:
 
+``` JSON
+{
+	"app_name": "gitlab",
+	"roles": [
+		{
+			"name": "comment-on-pr",
+			"permissions": [
+				[]
+			]
+		},
+		{
+			"name": "approve-pr",
+			"permissions": [
+				[
+					"test1",
+					"test2"
+				]
+			]
+		}
+	]
+}
+```
+``` JAVA 
+public class JsonResponseObject {
+
+    public JsonObject getJsonResponse(Map<String, List<String>> map, String azpRole) {
+
+        JsonObject payload = JsonArray.EMPTY_JSON_OBJECT;
+        JsonObject roles = JsonObject.EMPTY_JSON_OBJECT;
+        JsonArrayBuilder rolesArrayBuilder = Json.createArrayBuilder();
+        JsonArrayBuilder permissionArrayBuilder = Json.createArrayBuilder();
+        List<JsonObject> rolesList = new ArrayList<>();
+
+        for (Map.Entry<String, List<String>> val : map.entrySet()) {
+            List<String> permissions = val.getValue();
+            for (String permission : permissions) {
+                rolesArrayBuilder.add(permission);
+            }
+            payload =
+                    Json.createObjectBuilder()
+                            .add("name", val.getKey())
+                            .add("permissions", Json.createArrayBuilder().add(rolesArrayBuilder))
+                            .build();
+            rolesList.add(payload);
+        }
+
+        for (JsonObject x : rolesList) {
+            permissionArrayBuilder.add(x);
+        }
+
+        JsonObject appName =
+                Json.createObjectBuilder()
+                        .add("app_name", azpRole)
+                        .add("roles", permissionArrayBuilder)
+                        .build();
+        return appName;
+    }
+}
+```
+_____________________________________________________________________________________________
+
  ``` JSON
  {
-   "payment_gateway":{
-      "invoice_details":[
-         {
-            "id":"123",
-            "user_requested_amount":123
-         }
-      ],
-      "loan_application_id":123,
-      "source":"zxcv"
-   }
+  "payment_gateway":{
+  "invoice_details":[
+  {
+   "id":"123",
+   "user_requested_amount":123
+  }
+  ],
+  "loan_application_id":123,
+  "source":"zxcv"
+  }
 }
 ```
  ``` JAVA
@@ -38,6 +99,8 @@ The class JsonBuilderFactory also contains methods to create JsonObjectBuilder i
             .build();
 
 ```
+_____________________________________________________________________________________
+
  ``` JSON
 {
      "firstName": "John", "lastName": "Smith", "age": 25,
