@@ -7,24 +7,24 @@ The class JsonBuilderFactory also contains methods to create JsonObjectBuilder i
 
 ``` JSON
 {
-	"app_name": "gitlab",
-	"roles": [
-		{
-			"name": "comment-on-pr",
-			"permissions": [
-				[]
-			]
-		},
-		{
-			"name": "approve-pr",
-			"permissions": [
-				[
-					"test1",
-					"test2"
-				]
-			]
-		}
-	]
+    "app_name": "gitlab",
+    "roles": [
+    {
+     "name": "comment-on-pr",
+     "permissions": [
+        []
+    ]
+    },
+    {
+     "name": "approve-pr",
+     "permissions": [
+    [
+     "test1",
+     "test2"
+    ]
+    ]
+    }
+    ]
 }
 ```
 ``` JAVA 
