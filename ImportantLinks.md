@@ -30,3 +30,6 @@ LocalDate -> LocalDateTime conversion
 
 # JWT 
 * https://www.javainuse.com/spring/boot-jwt
+
+# Design Pattern
+* https://www.digitalocean.com/community/tutorials/java-design-patterns-example-tutorial

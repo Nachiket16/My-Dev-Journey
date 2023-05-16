@@ -1,5 +1,20 @@
 # Consume 3rd party API using the Rest template
 
+## RequestEntity exception handling
+
+``` Java
+ResponseEntity<String> responseEntity = null;
+        try {
+            responseEntity = restTemplate.exchange(url, HttpMethod.POST, request, String.class);
+        } catch (HttpStatusCodeException ex) {
+            responseEntity =
+                    new ResponseEntity<String>(
+                            ex.getResponseBodyAsString(),
+                            ex.getResponseHeaders(),
+                            ex.getStatusCode());
+        }
+```
+
 ## POST to API take the response 
 
 ``` Java 
