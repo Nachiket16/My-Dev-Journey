@@ -1,6 +1,6 @@
 # Important_Links
 
-LINUX MYSQL RESET LINK
+LINUX MYSQL Reset
 
 * https://devanswers.co/how-to-reset-mysql-root-password-ubuntu/#:~:text=MySQL%208%20%E2%80%93%20Reset%20Root%20Password,on%20Ubuntu%2C%20run%20following%20commands.&text=ALTER%20USER%20'root'%40',Flush%20privileges%20again.
 
