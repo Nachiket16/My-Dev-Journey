@@ -1,0 +1,3 @@
+- Quick start : select os = Ubuntu
+- Generate pem key for the connection
+- launch instance with default free tier 
