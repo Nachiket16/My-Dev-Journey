@@ -20,4 +20,16 @@
     - select Type as http (this will auto fill the port number with value 80)
     - select source to Anywhere-IPv4 (it will add 0.0.0.0/0)
   - click the button "Save rules"
+```
+# Docker commands after docker hub push
 
+- Pull Docker image from the docker hub   
+```
+docker pull phoenixfire16/reactapp:latest
+docker pull phoenixfire16/springboot-example:latest
+```
+- Run docker image and create container    
+```
+sudo docker run -d -p 3000:3000 --name reactapp phoenixfire16/reactapp
+sudo docker run -d -p 8080:8080 -e SPRING_PROFILES_ACTIVE=test --name springboot phoenixfire16/springboot-example
+ ```
