@@ -33,3 +33,42 @@ docker pull phoenixfire16/springboot-example:latest
 sudo docker run -d -p 3000:3000 --name reactapp phoenixfire16/reactapp
 sudo docker run -d -p 8080:8080 -e SPRING_PROFILES_ACTIVE=test --name springboot phoenixfire16/springboot-example
  ```
+
+----------------------------------------------------
+# Using .Jar file 
+# Run Spring Boot JAR on AWS EC2 Instance
+
+## 1. Build the JAR File
+
+Build your Spring Boot project and create the JAR file. Include the test profile if needed.
+
+```bash
+mvn clean install -Dspring.profiles.active=test
+```
+## 2. Copy the JAR to EC2 Instance  
+Copy your JAR file to the EC2 instance using scp or another method.
+``` bash
+scp -i /path/to/your/keypair.pem /path/to/your/app.jar ec2-user@your-ec2-instance-ip:/path/on/ec2/
+```
+## 3. SSH into EC2 Instance
+Use SSH to connect to your EC2 instance.
+
+``` bash
+ssh -i /path/to/your/keypair.pem ec2-user@your-ec2-instance-ip
+
+```
+## 4. Install Java on EC2 Instance
+Ensure that Java is installed on the EC2 instance.
+``` bash
+sudo yum install java
+
+```
+## 5. Run Your Spring Boot Application
+Navigate to the directory where you copied your JAR file and run the application.
+``` bash
+java -jar your-app.jar --spring.profiles.active=test
+```
+## 6. Access Your Application
+Open a web browser and navigate to your EC2 instance's public IP address or DNS name, along with the port your Spring Boot application is running on.
+
+If any issues arise, check the application logs on the EC2 instance for error details.
